@@ -1,0 +1,115 @@
+﻿@model ShoppingCartVM
+
+<section class="bg-body-tertiary py-4">
+	<div class="container">
+		<partial name="_PaymentStep" />
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8 bg-white p-3">
+				<div class="row">
+					<div class="col-5">
+						THÔNG TIN THANH TOÁN
+					</div>
+				</div>
+				<hr />
+				<form method="post">
+					<div class="form-floating mb-3">
+						<input asp-for="Order.Name" class="form-control rounded-0" />
+						<label asp-for="Order.Name" class="form-label">Tên:</label>
+						<span asp-validation-for="Order.Name" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3">
+						<input asp-for="Order.PhoneNumber" class="form-control rounded-0" />
+						<label asp-for="Order.PhoneNumber" class="form-label">Số điện thoại:</label>
+						<span asp-validation-for="Order.PhoneNumber" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3">
+						<input asp-for="Order.StreetAddress" class="form-control rounded-0" />
+						<label asp-for="Order.StreetAddress" class="form-label">Địa chi:</label>
+						<span asp-validation-for="Order.StreetAddress" class="text-danger"></span>
+					</div>
+					<div class="row">
+						<div class="col-6">
+							<div class="form-floating mb-3">
+								<input asp-for="Order.City" class="form-control rounded-0" />
+								<label asp-for="Order.City" class="form-label">Thành phố:</label>
+								<span asp-validation-for="Order.City" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-floating mb-3">
+								<input asp-for="Order.PostalCode" class="form-control rounded-0" />
+								<label asp-for="Order.PostalCode" class="form-label">Mã bưu chính:</label>
+								<span asp-validation-for="Order.PostalCode" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					<div class="text-end">
+						<a class="btn btn-outline-dark rounded-0 w-25" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+							Trở về giỏ hàng
+						</a>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-success rounded-0 w-25 ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Thanh toán
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body text-start">
+										<h5>Bạn có chắc muốn thanh toán ngay?</h5>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-outline-dark rounded-0" data-bs-dismiss="modal">Đóng</button>
+										<button type="submit" class="btn btn-success rounded-0">Thanh toán</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="col col-md-3 bg-white p-3 ms-4">
+				<p>
+					GIỎ HÀNG
+				</p>
+				<hr />
+				<div class="row">
+					<div class="col fs-7">TÔNG TIỀN</div>
+
+					<div class="col text-end fw-bold">@Model.Order.Total.ToString("#,##0").Replace(",", ".")<span> đ</span></div>
+				</div>
+
+				<div class="row my-3">
+					<div class="col fs-7">PHÍ VẬN CHUYỂN</div>
+					<div class="col text-end fw-bold">0<span> đ</span></div>
+				</div>
+
+				<hr />
+
+				<div class="row my-3">
+					<div class="col fs-7">TỔNG THANH TOÁN</div>
+					<div class="col text-end fw-bold">@Model.Order.Total.ToString("#,##0").Replace(",", ".")<span> đ</span></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+	<script>
+		function submitForm() {
+			document.getElementById('inputForm').submit();
+		}
+	</script>
+}
+

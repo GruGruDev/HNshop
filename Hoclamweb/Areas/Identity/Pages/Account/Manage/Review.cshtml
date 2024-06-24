@@ -1,0 +1,80 @@
+﻿@page "/review"
+@model ReviewModel
+@{
+	ViewData["Title"] = "Đánh giá";
+	ViewData["ActivePage"] = ManageNavPages.Order;
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="">
+	<div>
+		<form method="post">
+			<input name="id" value="@Model.ItemId" hidden />
+			<input name="productId" value="@Model.ProductId" hidden />
+			<h1 class="fs-5">Hãy điền đánh giá của bạn</h1>
+			<div class="mb-2">
+				<div class="mb-2">
+					<input id="star1{@Model.ItemId}" name="rating" type="radio" value="1" hidden>
+					<label for="star1{@Model.ItemId}"><i class="fa-solid fa-star"></i></label>
+
+					<input id="star2{@Model.ItemId}" name="rating" type="radio" value="2" hidden>
+					<label for="star2{@Model.ItemId}"><i class="fa-solid fa-star"></i></label>
+
+					<input id="star3{@Model.ItemId}" name="rating" type="radio" value="3" hidden>
+					<label for="star3{@Model.ItemId}"><i class="fa-solid fa-star"></i></label>
+
+					<input id="star4{@Model.ItemId}" name="rating" type="radio" value="4" hidden>
+					<label for="star4{@Model.ItemId}"><i class="fa-solid fa-star"></i></label>
+
+					<input id="star5{@Model.ItemId}" name="rating" type="radio" value="5" hidden>
+					<label for="star5{@Model.ItemId}"><i class="fa-solid fa-star"></i></label>
+				</div>
+				<div class="mb-2">
+					<label>Tiêu đề:</label>
+					<input class="form-control rounded-0" name="title" />
+				</div>
+				<div class="mb-2">
+					<label>Đánh giá:</label>
+					<textarea class="form-control rounded-0" rows="5" name="des">
+					</textarea>
+				</div>
+			</div>
+			<div class="text-end">
+				<a class="btn btn-outline-dark rounded-0 w-25"
+				   asp-page="/Account/Manage/Shipped">Quay lại</a>
+				<button type="submit" class="btn btn-dark rounded-0 w-25">Đánh giá</button>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var stars = document.querySelectorAll('input[name="rating"]');
+
+			stars.forEach(function (star, index) {
+				star.addEventListener('change', function () {
+					var checkedIndex = parseInt(star.value) - 1;
+
+					for (var i = 0; i < stars.length; i++) {
+						if (i <= checkedIndex) {
+							stars[i].nextElementSibling.classList.add('text-warning');
+						} else {
+							stars[i].nextElementSibling.classList.remove('text-warning');
+						}
+					}
+				});
+			});
+		});
+	</script>
+}
+
+
+
+
+

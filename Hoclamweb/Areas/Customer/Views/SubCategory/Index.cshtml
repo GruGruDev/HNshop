@@ -1,0 +1,227 @@
+﻿@model CustomerSubCategoryVM
+
+<section class="my-4">
+	<div class="container">
+		<h2 class="fw-bold mb-4">
+			@Model.SubCategory.Name <span class="fs-4">(@Model.Products.Count)</span>
+		</h2>
+		<div class="">
+			<button class="btn btn-outline-dark rounded-0 fs-7" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				Bộ lọc
+			</button>
+		</div>
+		<div class="collapse" id="collapseExample">
+			<form method="post">
+				<div class="row g-0">
+					<div class="col">
+						<div class="card rounded-0 hide-border-right" style="font-size:12px;">
+							<div class="card-header">
+								Danh mục
+							</div>
+							<div class="card-body p-0 custom-scrollbar" style="max-height: 100px; height: 100px; overflow: auto;">
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card rounded-0 hide-border-right" style="font-size:12px;">
+							<div class="card-header">
+								Giá
+							</div>
+							<div class="card-body p-0 custom-scrollbar" style="max-height: 100px; height: 100px; overflow: auto;">
+								<input id="price1" type="radio" name="price" value="price1" class="" @((Model.SelectedPrice == "price1") ? "checked" : "") />
+								<label for="price1" class="btn btn-outline-dark m-1 rounded-0 fs-8" style="text-transform:none;">
+									0đ - 1.000.000đ
+								</label>
+
+								<input id="price2" type="radio" name="price" value="price2" class="" @((Model.SelectedPrice == "price2") ? "checked" : "") />
+								<label for="price2" class="btn btn-outline-dark m-1 rounded-0 fs-8" style="text-transform:none;">
+									1.000.000đ - 5.000.000đ
+								</label>
+
+								<input id="price3" type=radio name="price" value="price3" class="" @((Model.SelectedPrice == "price3") ? "checked" : "") />
+								<label for="price3" class="btn btn-outline-dark m-1 rounded-0 fs-8" style="text-transform:none;">
+									> 5.000.000đ
+								</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="col">
+						<div class="card rounded-0 hide-border-right" style="font-size:12px;">
+							<div class="card-header">
+								Màu sắc
+							</div>
+							<div class="card-body p-0 custom-scrollbar" style="max-height: 100px;height: 100px; overflow-y: auto;">
+								@{
+									List<string> uniqueColors = new List<string>();
+								}
+								<div class="row">
+									@foreach (var item in Model.ProductColors)
+									{
+										if (!uniqueColors.Contains(item.Color.Name))
+										{
+											string englishColorName = Suitshop.Utility.SD.MapVietnameseToEnglishColorName(item.Color.Name);
+											string selectedColor = (item.Color.Name == Model.SelectedColor) ? "checked" : "";
+											<div class="col-4">
+												<input id="item.Id" type="radio" name="color" class="form-check-input fs-5" style="background-color:@englishColorName !important;" value="@item.Color.Name" @selectedColor />
+												<label for="item.Id" class=" col-form-label fs-8 ms-2">@item.Color.Name</label>
+											</div>
+											uniqueColors.Add(item.Color.Name);
+										}
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col">
+						<div class="card rounded-0" style="font-size:12px;">
+							<div class="card-header">
+								Sắp xếp
+							</div>
+							<div class="card-body p-0 custom-scrollbar" style="max-height: 100px;height: 100px; overflow: auto;">
+								<input id="asc" type="radio" name="sort" value="asc" class="" @((Model.SelectedSort == "asc") ? "checked" : "") />
+								<label for="asc" class="btn btn-outline-dark m-1 rounded-0 fs-8">
+									Giá tăng dần
+								</label>
+
+								<input id="desc" type="radio" name="sort" value="desc" class="" @((Model.SelectedSort == "desc") ? "checked" : "") />
+								<label for="desc" class="btn btn-outline-dark rounded-0 fs-8">
+									Giá giảm dần
+								</label>
+
+								<input id="az" type=radio name="sort" value="az" class="" @((Model.SelectedSort == "az") ? "checked" : "") />
+								<label for="az" class="btn btn-outline-dark m-1 rounded-0 fs-8">
+									Tên: A-Z
+								</label>
+
+								<input id="za" type="radio" name="sort" value="za" class="" @((Model.SelectedSort == "za") ? "checked" : "") />
+								<label for="za" class="btn btn-outline-dark m-1 rounded-0 fs-8">
+									Tên: Z-A
+								</label>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="card rounded-0 border-top-0">
+						<div class="card-footer border-top-0">
+							<button class="btn btn-dark fs-7 rounded-0" style="width:100px;" type="submit">Lọc</button>
+							<a class="btn btn-outline-secondary fs-7 rounded-0 ms-2" style="width:100px;" asp-area="Customer" asp-controller="SubCategory" asp-action="Index" asp-route-category="@Model.SubCategory.Category.UrlName" asp-route-urlName="@Model.SubCategory.UrlName">
+								Xóa bộ lọc
+							</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row g-2">
+			@foreach (var product in Model.Products)
+			{
+				var carouselId = "carousel" + product.Id;
+				<div class="col-3 mt-4">
+					<div id="@carouselId" class="carousel slide">
+						<div class="carousel-inner">
+							@foreach (var image in product.Images)
+							{
+								<div class="carousel-item active">
+									<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@product.SubCategory.UrlName" asp-route-slug="@product.Slug">
+										<img src="@image.ImageUrl" class="img-custom" alt="@product.Name">
+									</a>
+								</div>
+							}
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#@carouselId" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#@carouselId" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					<div class="">
+						<p class="m-0 text-uppercase fs-7">
+							@{
+								string englishColorName = Suitshop.Utility.SD.MapVietnameseToEnglishColorName(product.Color.Name);
+							}
+							<input type="radio" class="form-check-input fs-7" style="background-color:@englishColorName !important;" />
+						</p>
+						<p class="m-0 text-uppercase fw-bold fs-7">@product.Name</p>
+						<p class="m-0 fw-bold fs-7">@product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+					</div>
+				</div>
+			}
+			<div class="text-center">
+				@{
+					var prev = !Model.Products.HasPreviousPage ? "d-none" : "";
+					var next = !Model.Products.HasNextPage ? "d-none" : "";
+					var page1 = Model.Products.PageIndex >= 4 ? "" : "d-none";
+					var page1dot = Model.Products.PageIndex > 4 ? "" : "d-none";
+					var pageEnd = Model.Products.PageIndex + 2 < Model.Products.TotalPages ? "" : "d-none";
+					var pageEndDot = Model.Products.PageIndex + 3 < Model.Products.TotalPages ? "" : "d-none";
+				}
+				<a asp-action="Index"
+				   asp-route-urlName="@ViewData["urlName"]"
+				   asp-route-category="@ViewData["category"]"
+				   asp-route-price="@ViewData["price"]"
+				   asp-route-color="@ViewData["color"]"
+				   asp-route-sort="@ViewData["sort"]"
+				   asp-route-pageNumber="@(Model.Products.PageIndex - 1)"
+				   class="btn btn-outline-dark rounded-0 @prev">
+					Previous
+				</a>
+				<a asp-action="Index"
+				   asp-route-urlName="@ViewData["urlName"]"
+				   asp-route-category="@ViewData["category"]"
+				   asp-route-price="@ViewData["price"]"
+				   asp-route-color="@ViewData["color"]"
+				   asp-route-sort="@ViewData["sort"]"
+				   asp-route-pageNumber="1"
+				   class="btn btn-outline-dark rounded-0 @page1">
+					1
+				</a>
+				<span class="mx-2 @page1dot"><i class="fa-solid fa-ellipsis"></i></span>
+				<!-- Các nút trang -->
+				@for (int i = -2; i <= 2; i++)
+				{
+					int pageNum = Model.Products.PageIndex + i;
+					if (pageNum >= 1 && pageNum <= Model.Products.TotalPages)
+					{
+						<a asp-route-urlName="@ViewData["urlName"]"
+						   asp-route-category="@ViewData["category"]"
+						   asp-route-price="@ViewData["price"]"
+						   asp-route-color="@ViewData["color"]"
+						   asp-route-sort="@ViewData["sort"]"
+						   asp-route-pageNumber="@pageNum"
+						   class="btn btn-outline-dark rounded-0 @(pageNum == Model.Products.PageIndex ? "active" : "")">
+							@pageNum
+						</a>
+					}
+				}
+				<span class="mx-2 @pageEndDot"><i class="fa-solid fa-ellipsis"></i></span>
+				<a asp-action="Index"
+				   asp-route-urlName="@ViewData["urlName"]"
+				   asp-route-category="@ViewData["category"]"
+				   asp-route-price="@ViewData["price"]"
+				   asp-route-color="@ViewData["color"]"
+				   asp-route-sort="@ViewData["sort"]"
+				   asp-route-pageNumber="@Model.Products.TotalPages"
+				   class="btn btn-outline-dark rounded-0 @pageEnd">
+					@Model.Products.TotalPages
+				</a>
+				<a asp-action="Index"
+				   asp-route-urlName="@ViewData["urlName"]"
+				   asp-route-category="@ViewData["category"]"
+				   asp-route-price="@ViewData["price"]"
+				   asp-route-color="@ViewData["color"]"
+				   asp-route-sort="@ViewData["sort"]"
+				   asp-route-pageNumber="@(Model.Products.PageIndex + 1)"
+				   class="btn btn-outline-dark rounded-0 @next">
+					Next
+				</a>
+			</div>
+		</div>
+	</div>
+
+</section>
+

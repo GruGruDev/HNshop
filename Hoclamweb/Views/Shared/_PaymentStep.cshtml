@@ -1,0 +1,76 @@
+﻿@{
+	var path = Context.Request.Path;
+	var pageName = path.HasValue ? path.Value.Split('/').Last() : "";
+}
+
+
+<div class="row justify-content-center mb-2">
+	@if (pageName == "Cart")
+    {
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center text-success">
+				<i class="fa-solid fa-cart-shopping fs-5"></i>
+				<h6 class="m-0">Thêm vào giỏ hàng</h6>
+			</div>
+		</div>
+    }
+    else
+    {
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center">
+				<i class="fa-solid fa-cart-shopping fs-5"></i>
+				<h6 class="m-0">Thêm vào giỏ hàng</h6>
+			</div>
+		</div>
+    }
+
+	<div class="col-1 justify-content-center">
+		<div class="p-3 text-center">
+			<i class="fa-solid fa-angles-right"></i>
+		</div>
+	</div>
+
+	@if (pageName == "Payment")
+	{
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center text-success">
+				<i class="fa-solid fa-truck fs-5"></i>
+				<h6 class=" m-0">Thêm thông tin giao hàng</h6>
+			</div>
+		</div>
+	}
+	else
+	{
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center">
+				<i class="fa-solid fa-truck fs-5"></i>
+				<h6 class=" m-0">Thêm thông tin giao hàng</h6>
+			</div>
+		</div>
+	}
+
+	<div class="col-1 justify-content-center">
+		<div class="p-3 text-center">
+			<i class="fa-solid fa-angles-right"></i>
+		</div>
+	</div>
+
+	@if (pageName == "Order-Confirmation")
+	{
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center text-success">
+				<i class="fa-solid fa-credit-card fs-5"></i>
+				<h6 class=" m-0">Thanh toán</h6>
+			</div>
+		</div>
+	}
+	else
+	{
+		<div class="col-2 justify-content-center">
+			<div class="p-3 text-center">
+				<i class="fa-solid fa-credit-card fs-5"></i>
+				<h6 class=" m-0">Thanh toán</h6>
+			</div>
+		</div>
+	}
+</div>

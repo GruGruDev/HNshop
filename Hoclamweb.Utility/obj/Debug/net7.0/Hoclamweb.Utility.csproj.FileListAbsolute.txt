@@ -1,0 +1,12 @@
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Hoclamweb.Utility.deps.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Hoclamweb.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Hoclamweb.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.csproj.AssemblyReference.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.AssemblyInfoInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.AssemblyInfo.cs
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\refint\Hoclamweb.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Hoclamweb.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\ref\Hoclamweb.Utility.dll

@@ -1,0 +1,24 @@
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.deps.json
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.csproj.AssemblyReference.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.AssemblyInfoInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.AssemblyInfo.cs
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\refint\Suitshop.Utility.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.Utility\obj\Debug\net7.0\ref\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.deps.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\bin\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.csproj.AssemblyReference.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.AssemblyInfoInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.AssemblyInfo.cs
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\refint\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Utility\obj\Debug\net7.0\ref\Suitshop.Utility.dll

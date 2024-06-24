@@ -1,0 +1,180 @@
+﻿@model OrderVM
+
+<div class="card shadow rounded-0">
+	<div class="card-body p-3">
+		<div class="mb-3">
+			<h4>Chi tiết đơn hàng</h4>
+			<hr />
+			<div class="border border-black p-3">
+				<form method="post">
+					<input asp-for="@Model.Order.Id" hidden />
+					<div class="row">
+						<div class="col-8">
+							<h5 class="fw-bold mb-4">Mã đơn hàng: #@Model.Order.Id <span class="fs-6 ms-1 fw-normal">( @Model.Order.OrderDate )</span></h5>
+							<h6 class="fw-bold my-3">Thành tiền: <span class="ms-2">@Model.Order.Total.ToString("#,##0").Replace(",", ".")</span><span> đ</span></h6>
+							<h6 class="fw-bold my-3">
+								Trạng thái: <span class="ms-2 @(Model.Order.OrderStatus == SD.Order_WaitForConfirmation || Model.Order.OrderStatus == SD.Order_WaitForShip
+						? "text-warning"
+						: Model.Order.OrderStatus == SD.Order_Canceled
+							?"text-danger"
+							:"text-success")">@Model.Order.OrderStatus</span>
+								@{
+									string ShippedTime = "";
+									if (Model.Order.OrderStatus == SD.Order_Shipped)
+									{
+										ShippedTime = "(" + Model.Order.ShippingDate.ToString() + ")";
+									}
+								}
+								<span class="fw-normal">@ShippedTime</span>
+							</h6>
+							@if (Model.Order.PaymentStatus == SD.Payment_Paid)
+							{
+							<h6 class="fw-bold my-3">Thanh toán: <span class="text-success ms-2">@Model.Order.PaymentStatus</span> <span class="fw-normal">(@Model.Order.PaymentDate)</span></h6>
+							}
+							else{
+								<h6 class="fw-bold my-3">Hoàn tiền: <span class="text-success ms-2">@Model.Order.PaymentStatus</span></h6>
+							}
+						</div>
+						<div class="col">
+							@if (Model.Order.OrderStatus == @SD.Order_WaitForConfirmation)
+							{
+								<button asp-action="Confirm" type="submit" class="btn btn-success w-100 rounded-0 mb-2" style="text-transform:none;">Xác nhận</button>
+								<button asp-action="Cancel" type="submit" class="btn btn-danger w-100 rounded-0" style="text-transform:none;">Hủy và hoàn tiền</button>
+							}
+							@if (Model.Order.OrderStatus == @SD.Order_WaitForShip)
+							{
+								<button asp-action="Ship" type="submit" class="btn btn-success w-100 rounded-0 mb-2" style="text-transform:none;">Hoàn tất giao hàng</button>
+								<button asp-action="Cancel" type="submit" class="btn btn-danger w-100 rounded-0" style="text-transform:none;">Hủy và hoàn tiền</button>
+							}
+						</div>
+					</div>
+					<div>
+						<h6 class="fw-bold">Thông tin giao hàng:</h6>
+					</div>
+					<div class="container">
+						<div class="row border border-black mb-3 p-2">
+							<div class="col-6 mb-3">
+								<label asp-for="@Model.Order.Name" class="form-label">Tên:</label>
+								<input asp-for="@Model.Order.Name" class="form-control rounded-0" />
+							</div>
+							<div class="col-6 mb-3">
+								<label asp-for="@Model.Order.PhoneNumber" class="form-label">Số điện thoại:</label>
+								<input asp-for="@Model.Order.PhoneNumber" class="form-control rounded-0" />
+							</div>
+							<div class="col-12 mb-3">
+								<label asp-for="@Model.Order.StreetAddress" class="form-label">Địa chi:</label>
+								<input asp-for="@Model.Order.StreetAddress" class="form-control rounded-0" />
+							</div>
+							<div class="col-6 mb-3">
+								<label asp-for="@Model.Order.City" class="form-label">Thành phố:</label>
+								<input asp-for="@Model.Order.City" class="form-control rounded-0" />
+							</div>
+							<div class="col mb-3">
+								<label asp-for="@Model.Order.PostalCode" class="form-label">Mã bưu chính:</label>
+								<input asp-for="@Model.Order.PostalCode" class="form-control rounded-0" />
+							</div>
+							<div class="col-6 mb-3">
+								<label asp-for="@Model.Order.TrackingNumber" class="form-label">Tracking Number:</label>
+								<input asp-for="@Model.Order.TrackingNumber" class="form-control rounded-0" />
+							</div>
+							<div class="col-6 mb-3">
+								<label asp-for="@Model.Order.Carrier" class="form-label">Carrier:</label>
+								<input asp-for="@Model.Order.Carrier" class="form-control rounded-0" />
+							</div>
+							<div class="col-12 mb-3">
+								<label asp-for="@Model.Order.SessionId" class="form-label">SessionId:</label>
+								<input asp-for="@Model.Order.SessionId" class="form-control rounded-0" disabled />
+							</div>
+							<div class="col-12">
+								<label asp-for="@Model.Order.PaymentIntentId" class="form-label">PaymentIntentId:</label>
+								<input asp-for="@Model.Order.PaymentIntentId" class="form-control rounded-0" disabled />
+							</div>
+							<div class="my-3">
+							@if (Model.Order.OrderStatus != @SD.Order_Canceled && Model.Order.OrderStatus != @SD.Order_Shipped)
+							{
+									<button asp-action="UpdateInfo" type="submit" class="btn btn-success rounded-0 w-50 py-2" style="text-transform:none;">Cập nhật thông tin</button>
+							}
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<div>
+					<h6 class="fw-bold">Danh sách sản phẩm:</h6>
+					<hr />
+					<div class="row">
+						<div class="col-6">
+							Sản phẩm (@Model.Order.Items.Where(x=>x.OrderId==Model.Order.Id).Count())
+						</div>
+						<div class="col text-center">
+							Giá
+						</div>
+						<div class="col text-center">
+							Số lượng
+						</div>
+						<div class="col text-center">
+							Tổng tiền
+						</div>
+					</div>
+					@foreach (var item in Model.Items)
+					{
+						if (item.OrderId == Model.Order.Id)
+						{
+							<hr />
+							<div class="row mb-4">
+								<div class="col-6">
+									<div class="row">
+										<div class="col-3">
+											@foreach (var image in item.ProductDetail.Product.Images)
+											{
+												<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-slug="@item.ProductDetail.Product.Slug">
+													<img src="@image.ImageUrl" class="img-fluid" />
+												</a>
+												break;
+											}
+										</div>
+										<div class="col">
+											<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-slug="@item.ProductDetail.Product.Slug" class="text-decoration-none text-dark">
+												<p class="m-0 fw-bold">@item.ProductDetail.Product.Name</p>
+											</a>
+											<p class="m-0 fs-7">Kích thước: @item.ProductDetail.Size.Name</p>
+										</div>
+									</div>
+								</div>
+								<div class="col text-center">
+									<p class="m-0">@item.ProductDetail.Product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+								</div>
+								<div class="col text-center">
+									<div>
+										@item.Quantity
+									</div>
+								</div>
+								@{
+									double sum = item.ProductDetail.Product.Price * item.Quantity;
+								}
+								<div class="col text-center">
+									@sum.ToString("#,##0").Replace(",", ".")<span> đ</span>
+								</div>
+
+							</div>
+						}
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+	<script>
+		document.querySelectorAll('input[name="Model.OrderStatus"]').forEach(function (radio) {
+			radio.addEventListener('change', function () {
+				document.querySelector('#Model.OrderStatusForm').submit();
+			});
+		});
+	</script>
+}
+

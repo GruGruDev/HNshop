@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+	@if (SignInManager.IsSignedIn(User))
+	{
+		<h6 class="text-center mb-4">Xin Chào! @UserManager.GetUserName(User)!</h6>
+
+		@if (User.IsInRole(SD.Role_Admin))
+		{
+			<li class="nav-item mb-2">
+				<a class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+					Trang quản trị
+				</a>
+			</li>
+		}
+
+		<li class="nav-item mb-2">
+			<a id="manage" class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Thông tin tài khoản</a>
+		</li>
+		<li class="nav-item mb-2">
+			<a id="manage" class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Manage/WaitForConfirmation" title="Manage">Giỏ hàng</a>
+		</li>
+		<li class="nav-item mb-2">
+			<a id="manage" class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Manage/Email" title="Manage">Email</a>
+		</li>
+		<li class="nav-item mb-2">
+			<a id="manage" class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Manage/ChangePassword" title="Manage">Mật khẩu</a>
+		</li>
+		<hr />
+		<li class="nav-item">
+			<form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+				<button id="logout" type="submit" class="btn btn-outline-dark border-0 rounded-0 w-100 text-start" style="text-transform:none;">Đăng Xuất</button>
+			</form>
+		</li>
+	}
+	else
+	{
+		<li class="nav-item">
+			<a class="btn btn-outline-dark border-0 rounded-0 w-100" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Login">Đăng Nhập</a>
+		</li>
+		<li class="nav-item">
+			<a class="btn btn-outline-dark border-0 rounded-0 w-100" style="text-transform:none;" asp-area="Identity" asp-page="/Account/Register">Đăng Ký</a>
+		</li>
+	}
+</ul>

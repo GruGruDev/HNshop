@@ -1,0 +1,107 @@
+﻿@model CatsAndSubCatsVCVM
+
+<li class="nav-item py-3 shop-dropdown">
+	<a class="nav-link text-dark px-3 ms-2 fs-7" asp-area="Customer" asp-controller="Category" asp-action="Index" asp-route-urlName="ready-to-wear">
+		TRANG PHỤC
+	</a>
+	@*dropdown nav*@
+	<div id="dropdown-shop" class="py-5 ps-5 font-cabin">
+		<div class="row justify-content-center text-start">
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Lựa chọn</span></div>
+				<div><a>Hàng mới về</a></div>
+				<div><a>Best Seller</a></div>
+			</div>
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Áo</span></div>
+				@foreach (var subCategory in Model.ShirtsSubCategories)
+				{
+					<div class="mb-2">
+						<a asp-area="Customer" asp-controller="SubCategory" asp-action="Index" asp-route-category="@subCategory.Category.UrlName" asp-route-urlName="@subCategory.UrlName" class="text-dark text-decoration-none arrow-hover">
+							<span class="mx-2"><i class="fa-solid fa-angle-right fs-8"></i></span> @subCategory.Name
+						</a>
+					</div>
+				}
+			</div>
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Quần</span></div>
+				@foreach (var subCategory in Model.PantsSubCategories)
+				{
+					<div class="mb-2">
+						<a asp-area="Customer" asp-controller="SubCategory" asp-action="Index" asp-route-category="@subCategory.Category.UrlName" asp-route-urlName="@subCategory.UrlName" class="text-dark text-decoration-none arrow-hover">
+							<span class="mx-2"><i class="fa-solid fa-angle-right fs-8"></i></span> @subCategory.Name
+						</a>
+					</div>
+				}
+			</div>
+			<div class="col-3">
+				<img src="/image/imgcat1.png" class="img-fluid" />
+				<div><a asp-area="Customer" asp-controller="Category" asp-action="Readytowear" class="text-dark">Xem Tất Cả Trang phục ></a></div>
+			</div>
+		</div>
+	</div>
+</li>
+
+<li class="nav-item py-3 shoes-dropdown">
+	<a class="nav-link text-dark px-3 ms-2 fs-7" asp-area="Customer" asp-controller="Category" asp-action="Index" asp-route-urlName="shoes">
+		GIÀY DÉP
+	</a>
+	@*dropdown nav*@
+	<div id="dropdown-shoes" class="py-5 ps-5 font-cabin">
+		<div class="row justify-content-center text-start">
+			<div class="col-2">
+			</div>
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Giày dép</span></div>
+				<div>
+					<a asp-area="Customer" asp-controller="Category" asp-action="Index" asp-route-urlName="shoes" class="text-dark text-decoration-none arrow-hover">
+						<span class="mx-2"><i class="fa-solid fa-angle-right fs-8"></i></span>Xem tất cả các giày dép
+					</a>
+				</div>
+			</div>
+			<div class="col-3">
+				<img src="/image/imgcat2.png" class="img-fluid" />
+			</div>
+			<div class="col-1">
+			</div>
+		</div>
+	</div>
+</li>
+<li class="nav-item py-3 assecc-dropdown">
+	<a class="nav-link text-dark px-3 ms-2 fs-7" asp-area="Customer" asp-controller="Category" asp-action="Index" asp-route-urlName="accessories">
+		PHỤ KIỆN
+	</a>
+	@*dropdown nav*@
+	<div id="dropdown-assecc" class="py-5 ps-5 font-cabin">
+		<div class="row justify-content-center text-start">
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Phụ Kiện</span></div>
+				@foreach (var subCategory in Model.AccessoriesSubCategories)
+				{
+					<div class="mb-2">
+						<a asp-area="Customer" asp-controller="SubCategory" asp-action="Index" asp-route-category="@subCategory.Category.UrlName" asp-route-urlName="@subCategory.UrlName" class="text-dark text-decoration-none arrow-hover">
+							<span class="mx-2"><i class="fa-solid fa-angle-right fs-8"></i></span> @subCategory.Name
+						</a>
+					</div>
+				}
+			</div>
+			<div class="col-2">
+				<div class="mb-2"><span class="fw-bold" style="border-bottom:1px solid black;">Túi Xách &amp; Ví Da </span></div>
+				@foreach (var subCategory in Model.BriefcasesSubCategories)
+				{
+					<div class="mb-2">
+						<a asp-area="Customer" asp-controller="SubCategory" asp-action="Index" asp-route-category="@subCategory.Category.UrlName" asp-route-urlName="@subCategory.UrlName" class="text-dark text-decoration-none arrow-hover">
+							<span class="mx-2"><i class="fa-solid fa-angle-right fs-8"></i></span> @subCategory.Name
+						</a>
+					</div>
+				}
+			</div>
+			<div class="col-3">
+				<img src="/image/imgcat3.png" class="img-fluid" />
+				<div><a asp-area="Customer" asp-controller="Category" asp-action="Index" asp-route-urlName="Accessories" class="text-dark">Xem Tất Cả Phụ Kiện ></a></div>
+			</div>
+			<div class="col-1">
+			</div>
+		</div>
+	</div>
+</li>

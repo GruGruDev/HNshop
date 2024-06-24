@@ -1,0 +1,136 @@
+﻿@page "/my-order/shipped"
+@model ShippedModel
+@{
+	ViewData["Title"] = "Giỏ hàng";
+	ViewData["ActivePage"] = ManageNavPages.Order;
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="">
+	<div class="row mb-3">
+		<div class="col">
+			<a asp-page="./WaitForConfirmation" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Chờ xác nhận</a>
+		</div>
+		<div class="col">
+			<a asp-page="./WaitForShip" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Chờ giao hàng</a>
+		</div>
+		<div class="col">
+			<a asp-page="./Shipped" class="btn btn-dark rounded-0 w-100" style="text-transform:none;">Đã giao</a>
+		</div>
+		<div class="col">
+			<a asp-page="./Canceled" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Đã hủy</a>
+		</div>
+	</div>
+	@if (Model.Orders.Count <= 0)
+	{
+		<h5>Không có gì ở đây cả.</h5>
+	}
+	@foreach (var order in Model.Orders.OrderByDescending(x => x.Id))
+	{
+		<div class="border border-dark p-3 mb-4">
+			<div class="mb-3">
+				<h5 class="fw-bold">Mã đơn hàng: #@order.Id <span class="fs-6 ms-1 fw-normal">( @order.OrderDate )</span></h5>
+				<h6 class="fw-bold">Tổng giá: <span class="ms-2">@order.Total.ToString("#,##0").Replace(",", ".")</span><span> đ</span></h6>
+				<h6 class="fw-bold">Trạng thái: <span class="text-success ms-2">@order.OrderStatus</span> <span class="ms-1 fw-normal">(@order.ShippingDate)</span></h6>
+				<h6 class="fw-bold">Thanh toán: <span class="text-success ms-2">@order.PaymentStatus</span> <span class="ms-1 fw-normal">(@order.PaymentDate)</span></h6>
+			</div>
+			<div>
+				<div class="row">
+					<div class="col-6">
+						Sản phẩm (@Model.Items.Where(x=>x.OrderId==order.Id).Count())
+					</div>
+					<div class="col text-center">
+						Giá
+					</div>
+					<div class="col text-center">
+						Số lượng
+					</div>
+					<div class="col text-center">
+						Tổng tiền
+					</div>
+				</div>
+				@foreach (var item in Model.Items)
+				{
+					if (item.OrderId == order.Id)
+					{
+						<hr />
+						<div class="row mb-4">
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										@foreach (var image in item.ProductDetail.Product.Images)
+										{
+											<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@item.ProductDetail.Product.SubCategory.UrlName" asp-route-slug="@item.ProductDetail.Product.Slug">
+												<img src="@image.ImageUrl" class="img-fluid" />
+											</a>
+											break;
+										}
+									</div>
+									<div class="col">
+										<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@item.ProductDetail.Product.SubCategory.UrlName" asp-route-slug="@item.ProductDetail.Product.Slug" class="text-decoration-none text-dark">
+											<p class="m-0 fw-bold">@item.ProductDetail.Product.Name</p>
+										</a>
+										<p class="m-0 fs-7">Kích thước: @item.ProductDetail.Size.Name</p>
+									</div>
+								</div>
+							</div>
+							<div class="col text-center">
+								<p class="m-0">@item.ProductDetail.Product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+							</div>
+							<div class="col text-center">
+								<div>
+									@item.Quantity
+								</div>
+							</div>
+							@{
+								double sum = item.ProductDetail.Product.Price * item.Quantity;
+							}
+							<div class="col text-center">
+								@sum.ToString("#,##0").Replace(",", ".")<span> đ</span>
+							</div>
+						</div>
+						@if (item.isReview == false)
+						{
+							@if (DateTime.Now <= order.OrderDate.AddDays(7))
+							{
+								<div class="row">
+									<div class="col-10 text-danger text-end pt-2">
+										Thời hạn đánh giá của bạn đến ngày: @order.OrderDate.AddDays(7).Day / @order.OrderDate.AddDays(7).Month
+									</div>
+									<div class="col text-end">
+										<a  class="btn btn-dark rounded-0"
+										asp-page="/Account/Manage/Review" 
+										asp-route-itemId="@item.Id" 
+										asp-route-productId="@item.ProductDetail.Product.Id">Đánh giá</a>
+									</div>
+								</div>
+							}
+							else
+							{
+								//qua han danh gia
+								<div class="text-end">
+								<p class="text-danger">Quá hạn đánh giá</p>
+								</div>
+							}
+						}
+						else
+						{
+							//chua danh gia
+							<div class="text-end">
+								<p class="text-success">Đã đánh giá</p>
+							</div>
+						}
+					}
+
+				}
+				<hr />
+			</div>
+		</div>
+	}
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

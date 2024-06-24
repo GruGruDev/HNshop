@@ -1,0 +1,159 @@
+﻿@model ProductDetailCustomerVM
+
+<section class="my-4 pb-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-8">
+				<div class="row">
+					@foreach (var image in Model.Product.Images)
+					{
+						<div class="col">
+							<img src="@image.ImageUrl" class="img-fluid" style="" alt="@image.ImageUrl">
+						</div>
+					}
+				</div>
+			</div>
+			<div class="col px-5">
+				<h3 class="fw-bold mb-3">@Model.Product.Name</h3>
+				<p class="fs-5 fw-bold">@Model.Product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+				<form id="form" method="post">
+					<input asp-for="@Model.Product.Id" hidden />
+					<div>
+						<p class="mb-2 fs-7">Kích thước:</p>
+						@foreach (var productDe in Model.ProductDes)
+						{
+							<span>
+								@if (productDe.Size.Name == Model.sizeChecked)
+								{
+									<input id="@productDe.Id" type="radio" name="size" value="@productDe.Size.Name" checked />
+
+								}
+								else
+								{
+									<input id="@productDe.Id" type="radio" name="size" value="@productDe.Size.Name" />
+								}
+								<label for="@productDe.Id" class="btn btn-outline-dark m-1 rounded-0 fs-8" style="text-transform:none;">
+									@productDe.Size.Name
+								</label>
+							</span>
+						}
+						<p id="sizeError" class="text-danger alert m-0 p-0 fs-7">Vui lòng chọn một kích thước trước khi thêm vào giỏ hàng.</p>
+					</div>
+					<div class="my-2">
+						<label class="mb-3 fs-7">Thêm số lượng:</label>
+						<input name="count" type="number" min="1" step="1" class="form-control rounded-0 border border-1 border-black w-25 text-center" value="1" />
+						<p class="text-danger alert m-0 p-0 fs-7">@ViewData["quantityError"]</p>
+					</div>
+					<div class="my-4">
+						<button type="submit" class="btn btn-dark rounded-0 w-100 fs-6 py-3" style="text-transform:none;">
+							Thêm vào giỏ hàng
+						</button>
+					</div>
+				</form>
+				<div class="accordion accordion-flush border border-black" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+								<strong>Thông tin sản phẩm</strong>
+							</button>
+						</h2>
+						<div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body fs-7">
+								@Model.Product.Description
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+								<strong>Thời gian và phương thức giao hàng</strong>
+							</button>
+						</h2>
+						<div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body fs-7">
+								<p><strong>Chuyển phát nhanh:</strong> Miễn phí vận chuyển cho mọi đơn hàng.</p>
+								<p>Thời gian giao hàng từ 1 - 5 ngày làm việc.</p>
+								<p><strong>Nhận tại cửa hàng:</strong> Miễn phí giao hàng tại hệ thống cửa hàng HNshop.</p>
+								<p>Thời gian giao hàng từ 24 - 72h.</p>
+								<p>Khách hàng có nhu cầu giao hàng hỏa tốc trong ngày, vui lòng liên hệ tới hotline 086 907 0548 hoặc chat với Facebook HNshop Việt Nam chính thức tại đây để được hỗ trợ thêm.</p>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+								<strong>Chính sách đổi hàng</strong>
+							</button>
+						</h2>
+						<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body fs-7">
+								<p>Chính sách đổi hàng chỉ áp dụng cho khách hàng mua trên website:</p>
+								<p>- Đổi hàng trong vòng 14 ngày áp dụng cho sản phẩm nguyên giá và sản phẩm giảm giá không quá 30%</p>
+								<p>- Đổi size trong vòng 05 ngày áp dụng cho sản phẩm giảm giá trên 30%</p>
+								<p>Tham khảo thêm thông tin tại Chính sách đổi hàng và Hướng dẫn đổi hàng.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="bg-body-tertiary">
+	<div class="container py-5">
+		<div>
+			<h3 class="fw-bold mb-4">Các đánh giá của sản phẩm</h3>
+			@foreach (var review in Model.Reviews)
+			{
+				<div class="row p-5 mb-4 bg-white">
+					<div class="col-2">
+						<h6 class="fw-bold">@review.ApplicationUser.Name</h6>
+						<p class="mb-2">
+							@for (int i = 1; i <= 5; i++)
+							{
+								if (i < review.Rating)
+								{
+									<i class="fa-solid fa-star text-warning"></i>
+								}
+								else
+								{
+									<i class="fa-regular fa-star"></i>
+								}
+							}
+						</p>
+					</div>
+					<div class="col-8 border-left">
+						<h5 class="fw-bold">@review.Title</h5>
+						<h6>@review.Description</h6>
+					</div>
+					<div class="col border-left">
+						<h6>@review.CreateTime</h6>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>
+
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			var errorParagraph = document.getElementById('sizeError');
+			errorParagraph.style.display = 'none';
+
+			document.getElementById('form').addEventListener('submit', function (event) {
+				var selectedSize = document.querySelector('input[name="size"]:checked');
+
+				if (!selectedSize) {
+					event.preventDefault();
+					errorParagraph.style.display = 'block';
+				}
+			});
+		});
+	</script>
+}

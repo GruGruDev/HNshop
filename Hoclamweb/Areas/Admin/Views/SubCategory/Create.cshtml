@@ -1,0 +1,52 @@
+﻿@model SubCategoryVM
+
+<div class="card shadow rounded-0">
+	<div class="card-header bg-body-secondary ml-0 py-1">
+		<div class="row">
+			<div class="col-12">
+				<h5 class="p-2">Create Category Detail</h5>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-3">
+		<form method="post" class="row p-2">
+			<div>
+				<label asp-for="SubCategory.Name" class="mb-1"></label>
+				<input asp-for="SubCategory.Name" class="form-control" />
+				<span asp-validation-for="SubCategory.Name" class="text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="SubCategory.UrlName" class="mb-1"></label>
+				<input asp-for="SubCategory.UrlName" class="form-control" />
+				<span asp-validation-for="SubCategory.UrlName" class="text-danger"></span>
+			</div>
+			<div class="mt-3">
+				<label asp-for="SubCategory.Category.Name" class="mb-1"></label>
+				<select asp-for="SubCategory.CategoryId" asp-items="@Model.SubCategoryList" class="form-select w-25">
+					<option disabled selected>--Select Category--</option>
+				</select>
+				<span asp-validation-for="SubCategory.CategoryId" class="text-danger"></span>
+			</div>
+			<div class="mt-3">
+				<label asp-for="SubCategory.Description" class="mb-1"></label>
+				<textarea asp-for="SubCategory.Description" rows="5" class="form-control"></textarea>
+				<span asp-validation-for="SubCategory.Description" class="text-danger"></span>
+			</div>
+			
+			<div class="row pt-3">
+				<div class="col-6 col-md-3">
+					<button type="submit" class="btn btn-success py-2 form-control">Create</button>
+				</div>
+				<div class="col-6 col-md-3">
+					<a asp-controller="SubCategory" asp-action="Index" class="btn btn-outline-dark py-2 border form-control">Back to List</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}

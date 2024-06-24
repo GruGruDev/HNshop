@@ -1,0 +1,75 @@
+﻿@page
+@model ExternalLoginModel
+@{
+	ViewData["Title"] = "Register";
+}
+
+
+
+<section class="bg-body-tertiary">
+	<div class="container">
+		<div class="row justify-content-center py-4">
+			<div class="col-6 border p-5 bg-white">
+				<h1>@ViewData["Title"]</h1>
+				<h2 id="external-login-title">Associate your @Model.ProviderDisplayName account.</h2>
+				<hr />
+
+				<p id="external-login-description" class="text-info">
+					You've successfully authenticated with <strong>@Model.ProviderDisplayName</strong>.
+					Please enter an email address for this site below and click the Register button to finish
+					logging in.
+				</p>
+				<form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+					<div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+					<div class="form-floating mb-3">
+						<input asp-for="Input.Email" class="form-control rounded-0" autocomplete="email" placeholder="Please enter your email." />
+						<label asp-for="Input.Email" class="form-label"></label>
+						<span asp-validation-for="Input.Email" class="text-danger"></span>
+					</div>
+					<div class="form-floating mb-3">
+						<input asp-for="Input.Name" class="form-control rounded-0" aria-required="true" required placeholder="Nhập tên." />
+						<label asp-for="Input.Name">Tên</label>
+						<span asp-validation-for="Input.Name" class="text-danger"></span>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="form-floating mb-3">
+								<input asp-for="Input.PhoneNumber" class="form-control rounded-0" aria-required="true" required placeholder="Nhập số diện thoại." />
+								<label asp-for="Input.PhoneNumber">Số điện thoại</label>
+								<span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-floating mb-3">
+								<input asp-for="Input.PostalCode" class="form-control rounded-0" aria-required="true" required placeholder="Nhập mã bưu chính." />
+								<label asp-for="Input.PostalCode">Mã bưu chính</label>
+								<span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-8">
+							<div class="form-floating mb-3">
+								<input asp-for="Input.StreetAddress" class="form-control rounded-0" aria-required="true" required placeholder="Nhập địa chỉ." />
+								<label asp-for="Input.StreetAddress">Địa chỉ</label>
+								<span asp-validation-for="Input.StreetAddress" class="text-danger"></span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-floating mb-3">
+								<input asp-for="Input.City" class="form-control rounded-0" aria-required="true" placeholder="Nhập thành phố." />
+								<label asp-for="Input.City">Thành phố</label>
+								<span asp-validation-for="Input.City" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					<button type="submit" class="w-100 btn btn-lg btn-dark rounded-0 mt-3">Register</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+		}

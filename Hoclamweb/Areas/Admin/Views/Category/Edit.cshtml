@@ -1,0 +1,45 @@
+﻿@model Category
+
+<div class="card shadow rounded-0">
+	<div class="card-header bg-body-secondary ml-0 py-1">
+		<div class="row">
+			<div class="col-12">
+				<h5 class="p-2">Edit Category</h5>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-3">
+		<form method="post" class="row">
+			<input asp-for="Id" hidden />
+			<div>
+				<label asp-for="Name" class="mb-1"></label>
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="UrlName" class="mb-1"></label>
+				<input asp-for="UrlName" class="form-control" />
+				<span asp-validation-for="UrlName" class="text-danger"></span>
+			</div>
+			<div class="mt-3">
+				<label asp-for="Description" class="mb-1"></label>
+				<textarea asp-for="Description" rows="5" class="form-control"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<div class="row pt-3">
+				<div class="col-6 col-md-3">
+					<button type="submit" class="btn btn-warning form-control">Update</button>
+				</div>
+				<div class="col-6 col-md-3">
+					<a asp-controller="Category" asp-action="Index" class="btn btn-outline-dark form-control">Back to List</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}

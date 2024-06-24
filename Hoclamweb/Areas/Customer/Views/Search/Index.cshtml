@@ -1,0 +1,78 @@
+﻿@model SearchVM
+
+<section class="my-4">
+	<div class="container">
+		<form method="post" asp-action="Index">
+			<div class="row justify-content-center mt-3 mb-4">
+				<div class="input-group w-50">
+					<input type="search" name="search" value="@Model.Searched" class="form-control rounded-0 border-black" placeholder="Tìm sản phẩm" aria-describedby="button-addon2" required>
+					<button class="btn btn-outline-dark rounded-0" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</div>
+			</div>
+		</form>
+		<div class="text-center">
+		@if (Model.SearchedProducts != null)
+		{
+			if (Model.SearchedProducts.Count > 0)
+			{
+				<h2 class="fw-bold mb-4">
+					Sản phẩm tìm thấy<span class="ms-2 fs-4">(@Model.SearchedProducts.Count)</span>
+				</h2>
+			}
+			else
+			{
+				<h2 class="fw-bold mb-4">
+					Không tìm thấy sản phẩm nào.
+				</h2>
+			}
+		}
+		else
+		{
+			<h2 class="fw-bold mb-4">
+				Không tìm thấy sản phẩm nào.
+			</h2>
+		}
+		</div>
+
+		<div class="row g-2">
+			@foreach (var product in Model.SearchedProducts)
+			{
+				var carouselId = "carousel" + product.Id;
+				<div class="col-3 mt-4">
+					<div id="@carouselId" class="carousel slide">
+						<div class="carousel-inner">
+							@foreach (var image in product.Images)
+							{
+								<div class="carousel-item active">
+									<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@product.SubCategory.UrlName" asp-route-slug="@product.Slug">
+										<img src="@image.ImageUrl" class="img-custom" alt="@product.Name">
+									</a>
+								</div>
+							}
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#@carouselId" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#@carouselId" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					<div class="">
+						<p class="m-0 text-uppercase fs-7">
+							@{
+								string englishColorName = Suitshop.Utility.SD.MapVietnameseToEnglishColorName(product.Color.Name);
+							}
+							<input type="radio" class="form-check-input fs-7" style="background-color:@englishColorName !important;" />
+						</p>
+						<p class="m-0 text-uppercase fw-bold fs-7">@product.Name</p>
+						<p class="m-0 fw-bold fs-7">@product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+
+</section>
+

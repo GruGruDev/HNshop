@@ -1,0 +1,144 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Suitshop</title>
+	@* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" /> *@
+	<link rel="stylesheet" href="~/fontawesome-free-6.4.2-web/css/all.css" />
+	@*font*@
+	@*cabin*@
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&family=Nunito&family=Varela&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="~/Suitshop.styles.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+</head>
+<body class="font-cabin">
+	<header class="sticky-top bg-white px-4">
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm py-0 pe-4">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand py-2 px-3 m-0" asp-area="" asp-controller="Home" asp-action="Index">
+				<img src="/image/hnshop.png" class="logo-custom" />
+			</a>
+			<div class="collapse navbar-collapse d-sm-inline-flex justify-content-center text-center" id="navbarSupportedContent">
+				<ul class="navbar-nav">
+					@await Component.InvokeAsync("CategoriesAndSubCategories")
+					<li class="nav-item py-3 nav-link-hover">
+						<a class="nav-link text-dark px-3 ms-2 fs-7" asp-area="Customer" asp-controller="Home" asp-action="Index">
+							LIÊN HỆ
+						</a>
+					</li>
+
+				</ul>
+			</div>
+
+			@* search btn *@
+			<button class="border-0 bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#search" aria-controls="offcanvasRight">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
+
+			@if (SignInManager.IsSignedIn(User))
+			{
+				@* profile btn *@
+				<button class="border-0 bg-white px-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#user" aria-controls="offcanvasRight">
+					<i class="fa-solid fa-user"></i>
+				</button>
+				//VC Cart
+				@await Component.InvokeAsync("Cart")
+			}
+			else
+			{
+				@* profile btn *@
+				<button class="border-0 bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#user" aria-controls="offcanvasRight">
+					<i class="fa-regular fa-user"></i>
+				</button>
+			}
+
+
+		</nav>
+
+		@* search *@
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="search" aria-labelledby="offcanvasRightLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="search">Tìm Kiếm</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body p-0">
+				<form method="post" asp-area="Customer"  asp-controller="Search" asp-action="Index">
+				<div class="input-group mt-1">
+					<input type="search" name="search" class="form-control rounded-0 border-black" placeholder="Tìm sản phẩm" aria-describedby="button-addon2" required>
+					<button class="btn btn-outline-dark rounded-0" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+				</div>
+				</form>
+				<div class="">
+					@await Component.InvokeAsync("SearchProduct")
+				</div>
+			</div>
+		</div>
+
+		@* profile *@
+		<div class="offcanvas offcanvas-end" tabindex="-2" id="user" aria-labelledby="offcanvasRightLabel">
+			<div class="offcanvas-header">
+				<h5 class="offcanvas-title" id="user">Thông tin</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+			<div class="offcanvas-body">
+				<partial name="_LoginPartial" />
+			</div>
+		</div>
+
+	</header>
+
+
+
+	<main role="main" class="pb-3">
+		<partial name="_Notification" />
+		@RenderBody()
+	</main>
+
+	@* <footer class="border-top bg-black text-muted py-3">
+	<div class="container text-white text-center">
+	Suitshop <i class="bi bi-heart-fill"></i>
+	</div>
+	</footer> *@
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+
+	<script>
+		$(document).ready(function () {
+			// Lắng nghe sự kiện khi người dùng nhập vào input search
+			$('input[type="search"]').on('input', function () {
+				var searchTerm = $(this).val().toLowerCase(); // Lấy giá trị nhập vào và chuyển thành chữ thường
+
+				// Lặp qua từng sản phẩm để kiểm tra xem tên sản phẩm có chứa giá trị tìm kiếm không
+				$('.product-link').each(function () {
+					var productName = $(this).find('h6').text().toLowerCase(); // Lấy tên sản phẩm và chuyển thành chữ thường
+
+					// Kiểm tra nếu tên sản phẩm chứa giá trị tìm kiếm
+					if (productName.includes(searchTerm)) {
+						$(this).removeClass('d-none'); // Hiển thị sản phẩm nếu tìm thấy
+					} else {
+						$(this).addClass('d-none'); // Ẩn sản phẩm nếu không tìm thấy
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

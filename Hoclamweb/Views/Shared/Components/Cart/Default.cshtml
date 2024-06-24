@@ -1,0 +1,9 @@
+﻿@model int
+
+<a class="nav-link text-dark text-decoration-none py-4 ps-2 m-0" asp-area="Customer" asp-controller="Cart" asp-action="Index">
+	<i class="fa-solid fa-bag-shopping fs-6"></i>
+</a>
+@if (Model > 0)
+{
+	<sup><span class="bg-danger text-white rounded-5 px-1 fs-8">@Model</span></sup>
+}

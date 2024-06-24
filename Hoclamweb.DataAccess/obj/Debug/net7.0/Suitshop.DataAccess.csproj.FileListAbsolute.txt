@@ -1,0 +1,38 @@
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.deps.json
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.runtimeconfig.json
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.dll
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.AssemblyReference.cache
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.AssemblyInfoInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.AssemblyInfo.cs
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.CopyComplete
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.dll
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\refint\Suitshop.DataAccess.dll
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.genruntimeconfig.cache
+D:\HOC\VS\Suitshop\Hoclamweb.DataAccess\obj\Debug\net7.0\ref\Suitshop.DataAccess.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.deps.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.runtimeconfig.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.DataAccess.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\bin\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.AssemblyReference.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.AssemblyInfoInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.AssemblyInfo.cs
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.csproj.CopyComplete
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\refint\Suitshop.DataAccess.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\Suitshop.DataAccess.genruntimeconfig.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.DataAccess\obj\Debug\net7.0\ref\Suitshop.DataAccess.dll

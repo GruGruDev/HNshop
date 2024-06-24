@@ -1,0 +1,107 @@
+﻿body {
+    height: 100%;
+    background-color: #f1f1f1 !important;
+}
+
+
+
+#nav {
+}
+
+.row-equal-height {
+    display: flex;
+}
+
+.color-gray {
+    color: #b8b8b8;
+}
+
+
+.nav-btn {
+    text-transform: none;
+    color: #a0a0a0 !important;
+}
+
+    .nav-btn:hover {
+        background-color: #696969 !important;
+        color: white !important;
+    }
+
+Link-hover:hover .Link-hover span {
+    background-color: black !important;
+}
+Link-hover:hover i {
+    color:white;
+}
+
+
+
+
+.total {
+    width: 300px !important;
+    background: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.categories h3, .categories div i {
+    color: #ffea00;
+}
+
+.categories:hover {
+    background-color: #ffea00;
+    transition: 0.7s;
+}
+
+    .categories:hover h3, .categories:hover div i {
+        color: white;
+        transition: 0.7s;
+    }
+
+.SubCategorys h3, .SubCategorys div i {
+    color: #9ef01a;
+}
+
+.SubCategorys:hover {
+    background-color: #9ef01a;
+    transition: 0.7s;
+}
+
+    .SubCategorys:hover h3, .SubCategorys:hover div i {
+        color: white;
+        transition: 0.7s;
+    }
+
+.Products h3, .Products div i {
+    color: #9d4edd;
+}
+
+.Products:hover {
+    background-color: #9d4edd;
+    transition: 0.7s;
+}
+
+    .Products:hover h3, .Products:hover div i {
+        color: white;
+        transition: 0.7s;
+    }
+
+.Orders h3, .Orders div i {
+    color: #fb6f92;
+}
+
+.Orders:hover {
+    background-color: #fb6f92;
+    transition: 0.7s;
+}
+
+    .Orders:hover h3,.Orders:hover div i {
+        color: white;
+        transition: 0.7s;
+    }
+
+
+#subCatLink:hover, #catLink:hover {
+    background-color: #e4e2e0;
+    transition: 1s;
+}
+

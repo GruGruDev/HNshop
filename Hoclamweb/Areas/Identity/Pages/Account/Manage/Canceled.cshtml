@@ -1,0 +1,134 @@
+﻿@page "/my-order/canceled"
+@model CanceledModel
+@{
+	ViewData["Title"] = "Giỏ hàng";
+	ViewData["ActivePage"] = ManageNavPages.Order;
+}
+
+<h3>@ViewData["Title"]</h3>
+<hr />
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="">
+	<div class="row mb-3">
+		<div class="col">
+			<a asp-page="./WaitForConfirmation" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Chờ xác nhận</a>
+		</div>
+		<div class="col">
+			<a asp-page="./WaitForShip" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Chờ giao hàng</a>
+		</div>
+		<div class="col">
+			<a asp-page="./Shipped" class="btn btn-outline-dark rounded-0 w-100" style="text-transform:none;">Đã giao</a>
+		</div>
+		<div class="col">
+			<a asp-page="./Canceled" class="btn btn-dark rounded-0 w-100" style="text-transform:none;">Đã hủy</a>
+		</div>
+	</div>
+	@if (Model.Orders.Count <= 0)
+	{
+		<h5>Không có gì ở đây cả.</h5>
+	}
+	@foreach (var order in Model.Orders.OrderByDescending(x => x.Id))
+	{
+		<div class="border border-dark p-3 mb-4">
+			<div class="row mb-3">
+				<div class="col">
+					<h5 class="fw-bold">Mã đơn hàng: #@order.Id <span class="fs-6 ms-1 fw-normal">( @order.OrderDate )</span></h5>
+					<h6 class="fw-bold">Tổng giá: <span class="ms-2">@order.Total.ToString("#,##0").Replace(",", ".")</span><span> đ</span></h6>
+					<h6 class="fw-bold">Trạng thái: <span class="text-danger ms-2">@order.OrderStatus</span></h6>
+					<h6 class="fw-bold">Hoàn tiền: <span class="text-success ms-2">@order.PaymentStatus</span></h6>
+					<h6>(Mất vài ngày để tiền về tài khoản của bạn.)</h6>
+				</div>
+				<div class="col text-end">
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-dark rounded-0" style="text-transform:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						Mua lại
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5" id="exampleModalLabel">Mua lại đơn hàng</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body text-start">
+									<h5>Bạn có chắc muốn mua lại đơn hàng này?</h5>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-outline-dark rounded-0" style="text-transform:none;" data-bs-dismiss="modal">Đóng</button>
+									<form method="post" asp-route-id="@order.Id">
+										<button type="submit" class="btn btn-dark rounded-0" style="text-transform:none;">Mua lại đơn hàng</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="row">
+					<div class="col-6">
+						Sản phẩm (@Model.Items.Where(x=>x.OrderId==order.Id).Count())
+					</div>
+					<div class="col text-center">
+						Giá
+					</div>
+					<div class="col text-center">
+						Số lượng
+					</div>
+					<div class="col text-center">
+						Tổng tiền
+					</div>
+				</div>
+				@foreach (var item in Model.Items)
+				{
+					if (item.OrderId == order.Id)
+					{
+						<hr />
+						<div class="row mb-4">
+							<div class="col-6">
+								<div class="row">
+									<div class="col-4">
+										@foreach (var image in item.ProductDetail.Product.Images)
+										{
+											<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@item.ProductDetail.Product.SubCategory.UrlName" asp-route-slug="@item.ProductDetail.Product.Slug">
+												<img src="@image.ImageUrl" class="img-fluid" />
+											</a>
+											break;
+										}
+									</div>
+									<div class="col">
+										<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@item.ProductDetail.Product.SubCategory.UrlName" asp-route-slug="@item.ProductDetail.Product.Slug" class="text-decoration-none text-dark">
+											<p class="m-0 fw-bold">@item.ProductDetail.Product.Name</p>
+										</a>
+										<p class="m-0 fs-7">Kích thước: @item.ProductDetail.Size.Name</p>
+									</div>
+								</div>
+							</div>
+							<div class="col text-center">
+								<p class="m-0">@item.ProductDetail.Product.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+							</div>
+							<div class="col text-center">
+								<div>
+									@item.Quantity
+								</div>
+							</div>
+							@{
+								double sum = item.ProductDetail.Product.Price * item.Quantity;
+							}
+							<div class="col text-center">
+								@sum.ToString("#,##0").Replace(",", ".")<span> đ</span>
+							</div>
+
+						</div>
+					}
+				}
+			</div>
+		</div>
+	}
+</div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

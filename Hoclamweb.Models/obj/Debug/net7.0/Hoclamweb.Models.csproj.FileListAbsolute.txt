@@ -1,0 +1,12 @@
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Hoclamweb.Models.deps.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Hoclamweb.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Hoclamweb.Models.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.csproj.AssemblyReference.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.AssemblyInfoInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.AssemblyInfo.cs
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\refint\Hoclamweb.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Hoclamweb.Models.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\ref\Hoclamweb.Models.dll

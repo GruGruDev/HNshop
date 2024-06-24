@@ -1,0 +1,17 @@
+﻿@using Suitshop.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.IndexNavClass(ViewContext)" style="text-transform:none;" id="profile" asp-page="./Index">Tài khoản</a></li>
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.OrderNavClass(ViewContext)" style="text-transform:none;" id="order" asp-page="./WaitForConfirmation">Giỏ hàng</a></li>
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.EmailNavClass(ViewContext)" style="text-transform:none;" id="email" asp-page="./Email">Email</a></li>
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.ChangePasswordNavClass(ViewContext)" style="text-transform:none;" id="change-password" asp-page="./ChangePassword">Mật khẩu</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item"><a id="external-login" class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.ExternalLoginsNavClass(ViewContext)" style="text-transform:none;" asp-page="./ExternalLogins">External logins</a></li>
+    }
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" style="text-transform:none;" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="nav-item"><a class="btn btn-outline-dark rounded-0 border-white text-start p-3 w-100 @ManageNavPages.PersonalDataNavClass(ViewContext)" style="text-transform:none;" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+</ul>

@@ -1,0 +1,187 @@
+﻿:root {
+    --green-color: #22223b;
+}
+
+.bg-green {
+    background-color: var(--green-color);
+}
+
+.font-cabin {
+    font-family: 'Cabin', sans-serif;
+}
+
+/*font-size*/
+.fs-7 {
+    font-size: 13px !important;
+}
+
+.fs-8 {
+    font-size: 10px !important;
+}
+
+.fs-9 {
+    font-size: 7px !important;
+}
+
+/*colors
+redpink #FA2A55*/
+/*bg colors*/
+.bg-1 {
+    background-color: #fffbf3;
+}
+
+.bg-2 {
+    background-color: #F1E5AC;
+}
+/*bg img*/
+.bg-custom {
+    background-image: url('../image/bg.png');
+    background-repeat: repeat-x;
+}
+
+.bg-custom-overplay {
+    padding: 150px 200px;
+}
+
+.bg-custom-opacity {
+    background-color: rgba(50,50,50,0.7);
+}
+
+/*font*/
+.font-timenewroman {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #F5F5F5;
+}
+
+.table-container thead th {
+    position: sticky;
+    top: 0;
+    background-color: #343a40; /* Màu nền cho hàng tiêu đề */
+    color: white; /* Màu chữ cho hàng tiêu đề */
+}
+
+.border-left {
+    border-left: 1px solid rgba(128, 128, 128,0.2);
+    padding-left: 25px;
+}
+
+.border-right {
+    border-right: 1px solid rgba(128, 128, 128,0.2);
+    padding-right: 25px;
+}
+
+.border-custom-bottom {
+    border-bottom: 1px solid #000000;
+}
+
+
+
+
+a.nav-link:hover,
+a.nav-link:focus {
+    color: #FA2A55; /* Màu chữ khi hover hoặc focus */
+    border: none; /* Loại bỏ border khi hover hoặc focus */
+    background-color: transparent; /* Loại bỏ background color khi hover hoặc focus */
+    text-decoration: none; /* Loại bỏ underline khi hover hoặc focus */
+}
+
+/*section-2*/
+
+border-topbot-custom {
+    border-top: 3px solid rgba(128, 128, 128,0.2);
+    border-bottom: 3px solid rgba(128, 128, 128,0.2);
+}
+
+.p-custom-btn {
+    width: 100%; /* Chiều rộng ngang của thẻ <a> bằng 100% của <div> cha */
+    display: block; /* Đảm bảo thẻ <a> chiếm hết chiều rộng của <div> */
+}
+
+/*fs*/
+.fs-7 {
+    font-size: 13px;
+}
+
+.color-custom-price {
+    color: #484d55;
+}
+
+/*img*/
+.img-custom {
+    height: 500px;
+    object-fit: contain;
+    object-position: -95px -5px;
+}
+
+
+
+/*border filter*/
+.hide-border-right {
+    border-right: none !important;
+}
+
+
+/*filter*/
+.custom-scrollbar {
+    overflow: hidden;
+    position: relative;
+    margin: 20px 20px 20px 20px;
+}
+
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 5px; /* Độ rộng của thanh cuộn */
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: #888; /* Màu của con trỏ thanh cuộn */
+        border-radius: 4px; /* Bo góc con trỏ thanh cuộn */
+    }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Màu con trỏ thanh cuộn khi di chuột qua */
+        }
+
+input[type=radio]:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+input[type=radio]:checked {
+    border: 1px solid black;
+}
+
+
+input[name="sort"], input[name="subCat"], input[name="price"], input[name="size"] {
+    display: none;
+}
+
+    input[name="sort"]:checked + label, input[name="subCat"]:checked + label, input[name="price"]:checked + label,
+    input[name="size"]:checked + label {
+        background-color: black;
+        color: white;
+    }
+
+.truncate-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+}
+
+/*star rating*/
+
+/*input[name="star"]:checked + label i {
+    color: yellow !important;
+}
+
+input[name="star"]:checked input[name="star"] label i {
+    color: yellow !important;
+}
+
+input[name="star"]:checked ~ label i {
+    color: black;
+}*/

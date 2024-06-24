@@ -1,0 +1,25 @@
+﻿@model List<Product>
+
+@foreach (var p in Model)
+{
+	<div class="product-link p-3 border-top d-none">
+		<a asp-area="Customer" asp-controller="Product" asp-action="ProductDetail" asp-route-subcategory="@p.SubCategory.UrlName" asp-route-slug="@p.Slug" class=" text-decoration-none text-dark">
+			<div class="row">
+				<div class="col-4">
+					@foreach (var image in p.Images)
+					{
+						<img src="@image.ImageUrl" class="img-fluid">
+						break;
+					}
+				</div>
+				<div class="col">
+					<h6 class="truncate-2-lines">@p.Name</h6>
+					<p class="fs-7 text-secondary">@p.Color.Name</p>
+					<div class="text-end">
+						<p class="fs-7">@p.Price.ToString("#,##0").Replace(",", ".")<span> đ</span></p>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+}

@@ -1,0 +1,27 @@
+D:\HOC\VS\Suitshop\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.deps.json
+D:\HOC\VS\Suitshop\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.csproj.AssemblyReference.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.AssemblyInfoInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.AssemblyInfo.cs
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\refint\Suitshop.Models.dll
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Suitshop\Hoclamweb.Models\obj\Debug\net7.0\ref\Suitshop.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.deps.json
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Utility.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\bin\Debug\net7.0\Suitshop.Utility.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.csproj.AssemblyReference.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.AssemblyInfoInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.AssemblyInfo.cs
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.csproj.CoreCompileInputs.cache
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.csproj.CopyComplete
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\refint\Suitshop.Models.dll
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\Suitshop.Models.pdb
+D:\HOC\VS\Hoc lam web\Hoclamweb.Models\obj\Debug\net7.0\ref\Suitshop.Models.dll
